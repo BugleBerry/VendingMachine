@@ -21,15 +21,53 @@ public class VendingMachine {
     }
 
     public void purchase(Item itemToPurchase) {
-        if (balance.compareTo(new BigDecimal(itemToPurchase.getPrice())) == -1) {
+        if (balance.compareTo(new BigDecimal(itemToPurchase.getPrice())) < 0) {
             System.out.println("Not enough funds");
         } else {
             if (inventory.getAmountPerItem().get(itemToPurchase) < 1) {
                 System.out.println("Sorry, the item is sold out");
             } else {
                 subtractBalance(itemToPurchase);
+                inventory.subtractItem(itemToPurchase);
 
+                switch(itemToPurchase.getCategory()){
+                    case "Chip":
+                        System.out.println("Crunch Crunch, Yum!");
+                        break;
+                    case "Candy":
+                        System.out.println("Munch Munch, Yum!");
+                        break;
+                    case "Drink":
+                        System.out.println("Glug Glug, Yum!");
+                        break;
+                    case "Gum":
+                        System.out.println("Chew Chew, Yum!");
+                        break;
+                    default:
+                        System.out.println("Unknown Category");
+                        break;
+                }
             }
         }
+    }
+
+    public String calculateChange(){
+        int quarters;
+        int dimes;
+        int nickels;
+        BigDecimal remainder;
+        quarters = balance.divide(new BigDecimal("0.25")).intValue();
+        remainder = balance.remainder(new BigDecimal("0.25"));
+        dimes = balance.divide(new BigDecimal("0.10")).intValue();
+        remainder = balance.remainder(new BigDecimal("0.10"));
+        nickels = balance.divide(new BigDecimal("0.05")).intValue();
+
+        balance = BigDecimal.ZERO;
+        return ("Quarters: " + quarters + " Dimes: " + dimes + " Nickels: " + nickels);
+
+    }
+
+    public Inventory getInventory(){
+        return inventory;
     }
 }

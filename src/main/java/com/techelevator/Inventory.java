@@ -7,10 +7,10 @@ import java.util.*;
 
 public class Inventory {
 
-    Map<Item,Integer> amountPerItem = new HashMap<>();
+    private Map<Item,Integer> amountPerItem = new HashMap<>();
 
-    List<Item> items = new ArrayList<>();
-    File inventoryFile = new File("ExampleFiles/VendingMachine.txt");
+    private List<Item> items = new ArrayList<>();
+    private File inventoryFile = new File("ExampleFiles/VendingMachine.txt");
 
     public void createItems(){
         String[] itemsArray = new String[4];
@@ -38,6 +38,10 @@ public class Inventory {
             }
 
         }
+    }
+
+    public void subtractItem(Item item){
+        amountPerItem.put(item,amountPerItem.get(item)-1);
     }
 
     public Map<Item, Integer> getAmountPerItem() {
