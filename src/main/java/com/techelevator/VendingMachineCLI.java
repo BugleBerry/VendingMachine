@@ -14,6 +14,7 @@ public class VendingMachineCLI {
 	public void run() {
 		displayWelcomeMessage();
 		// ToDo - Add Code here to show menu, etc.
+		Inventory inventory = new Inventory();
 	}
 
 	public void displayWelcomeMessage(){
