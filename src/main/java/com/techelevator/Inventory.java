@@ -11,6 +11,7 @@ public class Inventory {
 
     List<Item> items = new ArrayList<>();
     File inventoryFile = new File("ExampleFiles/VendingMachine.txt");
+
     public void createItems(){
         String[] itemsArray = new String[4];
         try(Scanner fileReader = new Scanner(inventoryFile)){
@@ -37,5 +38,13 @@ public class Inventory {
             }
 
         }
+    }
+
+    public Map<Item, Integer> getAmountPerItem() {
+        return amountPerItem;
+    }
+
+    public void setAmountPerItem(Map<Item, Integer> amountPerItem) {
+        this.amountPerItem = amountPerItem;
     }
 }
