@@ -51,4 +51,13 @@ public class Inventory {
     public void setAmountPerItem(Map<Item, Integer> amountPerItem) {
         this.amountPerItem = amountPerItem;
     }
+
+    public Item getItemByPosition(String position) {
+        for (Item item : items) {
+            if (item.getPosition().equals(position)) {
+                return item;
+            }
+        }
+        return null;
+    }
 }

@@ -7,7 +7,7 @@ public class VendingMachine {
     private Inventory inventory;
 
     public VendingMachine() {
-        this.balance = new BigDecimal("0.00");
+        this.balance = new BigDecimal("5.00");
         this.inventory = new Inventory();
         inventory.createItems();
     }
@@ -69,5 +69,9 @@ public class VendingMachine {
 
     public Inventory getInventory(){
         return inventory;
+    }
+
+    public BigDecimal getBalance() {
+        return balance;
     }
 }

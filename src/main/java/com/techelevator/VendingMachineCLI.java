@@ -60,7 +60,7 @@ public class VendingMachineCLI {
 				// select new choice
 				break;
 			case "3":
-				System.out.println("Exit");
+				System.out.println("Goodbye!");
 				break;
 			case "4":
 				// print sales report
@@ -77,19 +77,27 @@ public class VendingMachineCLI {
 
 		switch (answer){
 			case "1":
-				System.out.println("How much do yoy want to add: ");
+				System.out.println("How much do you want to add: ");
 				String amount = input.nextLine();
-				// fix
-				BigDecimal amountToAdd = BigDecimal.ZERO;
+				BigDecimal amountToAdd = new BigDecimal(amount);
 				vendingMachine.addBalance(amountToAdd);
-				System.out.println();
 				break;
 			case "2":
-				System.out.println("Which product do yuo want to buy (EX:A1): ");
+				System.out.println("Which product do you want to buy (EX:A1): ");
 				String itemPosition = input.nextLine();
-				// purchase the item
+				Item itemToPurchase = vendingMachine.getInventory().getItemByPosition(itemPosition);
+				if (itemToPurchase == null) {
+					System.out.println("Item was not found");
+				} else {
+					vendingMachine.purchase(itemToPurchase);
+				}
+				break;
 			case "3":
 				System.out.println(vendingMachine.calculateChange());
+				break;
+			default:
+				System.out.println("Input Valid Choice");
+				break;
 		}
 
 	}
