@@ -69,7 +69,8 @@ public class VendingMachineCLI {
 				hasEnded = true;
 				break;
 			case "4":
-				// print sales report
+				SalesReport salesReport = new SalesReport(vendingMachine.
+						getInventory().calculateItemSold(), vendingMachine.getTotalAmountSpent());
 				break;
 			default:
 				System.out.println("Input Valid Choice");

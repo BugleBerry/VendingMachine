@@ -5,11 +5,13 @@ import java.math.BigDecimal;
 public class VendingMachine {
     private BigDecimal balance;
     private Inventory inventory;
+    private BigDecimal totalAmountSpent;
 
     public VendingMachine() {
         this.balance = new BigDecimal("0.00");
         this.inventory = new Inventory();
         inventory.createItems();
+        this.totalAmountSpent = new BigDecimal("0.00");
     }
 
     public void addBalance(BigDecimal amountToAdd) {
@@ -29,7 +31,7 @@ public class VendingMachine {
             } else {
                 subtractBalance(itemToPurchase);
                 inventory.subtractItem(itemToPurchase);
-
+                totalAmountSpent = totalAmountSpent.add(new BigDecimal(itemToPurchase.getPrice()));
                 switch(itemToPurchase.getCategory()){
                     case "Chip":
                         System.out.println("Crunch Crunch, Yum!");
@@ -75,5 +77,9 @@ public class VendingMachine {
 
     public BigDecimal getBalance() {
         return balance;
+    }
+
+    public BigDecimal getTotalAmountSpent() {
+        return totalAmountSpent;
     }
 }
