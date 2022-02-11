@@ -7,7 +7,7 @@ public class VendingMachine {
     private Inventory inventory;
 
     public VendingMachine() {
-        this.balance = new BigDecimal("5.00");
+        this.balance = new BigDecimal("0.00");
         this.inventory = new Inventory();
         inventory.createItems();
     }
@@ -58,9 +58,11 @@ public class VendingMachine {
         BigDecimal remainder;
         quarters = balance.divide(new BigDecimal("0.25")).intValue();
         remainder = balance.remainder(new BigDecimal("0.25"));
-        dimes = balance.divide(new BigDecimal("0.10")).intValue();
-        remainder = balance.remainder(new BigDecimal("0.10"));
-        nickels = balance.divide(new BigDecimal("0.05")).intValue();
+
+        dimes = remainder.divide(new BigDecimal("0.10")).intValue();
+        remainder = remainder.remainder(new BigDecimal("0.10"));
+
+        nickels = remainder.divide(new BigDecimal("0.05")).intValue();
 
         balance = BigDecimal.ZERO;
         return ("Quarters: " + quarters + " Dimes: " + dimes + " Nickels: " + nickels);

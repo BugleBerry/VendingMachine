@@ -7,10 +7,12 @@ public class VendingMachineCLI {
 
 	private boolean hasAddedBalance;
 	private VendingMachine vendingMachine;
+	private boolean hasEnded;
 
 	public VendingMachineCLI() {
 		this.hasAddedBalance = false;
 		vendingMachine = new VendingMachine();
+		hasEnded = false;
 	}
 
 	public static void main(String[] args) {
@@ -22,9 +24,12 @@ public class VendingMachineCLI {
 	public void run() {
 		Scanner input = new Scanner(System.in);
 		displayWelcomeMessage();
-		displayOptions();
 
-		customerChoice(input);
+		while(!hasEnded){
+			displayOptions();
+			customerChoice(input);
+		}
+
 
 
 
@@ -40,6 +45,7 @@ public class VendingMachineCLI {
 	}
 
 	public void displayOptions(){
+		System.out.println();
 		System.out.println("1) Display Items");
 		System.out.println("2) Purchase Items");
 		System.out.println("3) Exit");
@@ -57,10 +63,10 @@ public class VendingMachineCLI {
 				System.out.println("2) Select Product");
 				System.out.println("3) Finish Transaction");
 				customerActions(input);
-				// select new choice
 				break;
 			case "3":
 				System.out.println("Goodbye!");
+				hasEnded = true;
 				break;
 			case "4":
 				// print sales report
@@ -71,7 +77,6 @@ public class VendingMachineCLI {
 		}
 	}
 
-
 	public void customerActions(Scanner input){
 		String answer = input.nextLine().trim();
 
@@ -81,8 +86,13 @@ public class VendingMachineCLI {
 				String amount = input.nextLine();
 				BigDecimal amountToAdd = new BigDecimal(amount);
 				vendingMachine.addBalance(amountToAdd);
+				hasAddedBalance = true;
 				break;
 			case "2":
+				if(!hasAddedBalance){
+					System.out.println("First Add Funds");
+					break;
+				}
 				System.out.println("Which product do you want to buy (EX:A1): ");
 				String itemPosition = input.nextLine();
 				Item itemToPurchase = vendingMachine.getInventory().getItemByPosition(itemPosition);

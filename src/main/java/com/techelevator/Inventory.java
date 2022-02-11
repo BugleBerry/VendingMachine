@@ -60,4 +60,12 @@ public class Inventory {
         }
         return null;
     }
+
+    public Map<Item,Integer> calculateItemSold(){
+        Map<Item,Integer> returnMap = new HashMap<>();
+        for(Map.Entry<Item,Integer> item : amountPerItem.entrySet()){
+            returnMap.put(item.getKey(),5-item.getValue());
+        }
+        return returnMap;
+    }
 }
