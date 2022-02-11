@@ -91,7 +91,7 @@ public class VendingMachineCLI {
 				BigDecimal amountToAdd = new BigDecimal(amount);
 				vendingMachine.addBalance(amountToAdd);
 				hasAddedBalance = true;
-				audit.auditMoneyAdded(amount);
+				audit.auditMoneyAdded(amountToAdd, vendingMachine.getBalance());
 
 				break;
 			case "2":
@@ -106,10 +106,13 @@ public class VendingMachineCLI {
 					System.out.println("Item was not found");
 				} else {
 					vendingMachine.purchase(itemToPurchase);
+					audit.auditPurchaseMade(itemToPurchase, vendingMachine.getBalance());
 				}
 				break;
 			case "3":
+				BigDecimal previousBalance = vendingMachine.getBalance();
 				System.out.println(vendingMachine.calculateChange());
+				audit.auditCompletedTransaction(previousBalance, vendingMachine.getBalance());
 				break;
 			default:
 				System.out.println("Input Valid Choice");
