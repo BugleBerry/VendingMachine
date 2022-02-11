@@ -1,5 +1,6 @@
 package com.techelevator;
 
+import javax.swing.text.StyledEditorKit;
 import java.math.BigDecimal;
 
 public class VendingMachine {
@@ -22,7 +23,9 @@ public class VendingMachine {
         this.balance = balance.subtract(new BigDecimal(itemToPurchase.getPrice()));
     }
 
-    public void purchase(Item itemToPurchase) {
+    public boolean purchase(Item itemToPurchase) {
+        boolean successfulPurchase = false;
+
         if (balance.compareTo(new BigDecimal(itemToPurchase.getPrice())) < 0) {
             System.out.println("Not enough funds");
         } else {
@@ -32,6 +35,7 @@ public class VendingMachine {
                 subtractBalance(itemToPurchase);
                 inventory.subtractItem(itemToPurchase);
                 totalAmountSpent = totalAmountSpent.add(new BigDecimal(itemToPurchase.getPrice()));
+                successfulPurchase = true;
                 switch(itemToPurchase.getCategory()){
                     case "Chip":
                         System.out.println("Crunch Crunch, Yum!");
@@ -51,6 +55,7 @@ public class VendingMachine {
                 }
             }
         }
+        return successfulPurchase;
     }
 
     public String calculateChange(){

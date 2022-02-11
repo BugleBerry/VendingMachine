@@ -25,6 +25,8 @@ public class Inventory {
         }
         catch (FileNotFoundException e){
             System.out.println("File wasn't found");
+        }catch (ArrayIndexOutOfBoundsException e){
+            System.out.println("ERROR: Inventory file is formatted incorrectly.");
         }
     }
 
