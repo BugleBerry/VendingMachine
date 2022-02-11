@@ -8,10 +8,12 @@ public class VendingMachineCLI {
 	private boolean hasAddedBalance;
 	private VendingMachine vendingMachine;
 	private boolean hasEnded;
+	Audit audit;
 
 	public VendingMachineCLI() {
 		this.hasAddedBalance = false;
 		vendingMachine = new VendingMachine();
+		audit = new Audit();
 		hasEnded = false;
 	}
 
@@ -71,6 +73,7 @@ public class VendingMachineCLI {
 			case "4":
 				SalesReport salesReport = new SalesReport(vendingMachine.
 						getInventory().calculateItemSold(), vendingMachine.getTotalAmountSpent());
+				System.out.println(vendingMachine.getTotalAmountSpent());
 				break;
 			default:
 				System.out.println("Input Valid Choice");
@@ -88,6 +91,8 @@ public class VendingMachineCLI {
 				BigDecimal amountToAdd = new BigDecimal(amount);
 				vendingMachine.addBalance(amountToAdd);
 				hasAddedBalance = true;
+				audit.auditMoneyAdded(amount);
+
 				break;
 			case "2":
 				if(!hasAddedBalance){

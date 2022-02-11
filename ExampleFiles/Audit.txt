@@ -1,0 +1,7 @@
+Date Time Amount newBalance
+Date Time Amount newBalance
+Fri Feb 11 12:46:46 EST 2022 Time Amount newBalance
+12 Time Amount newBalance
+11/02/2022 12:56:54 Time Amount newBalance
+11/02/2022 12:57:53 PM Time Amount newBalance
+11/02/2022 13:01:41 PMFEED MONEY: 11newBalance

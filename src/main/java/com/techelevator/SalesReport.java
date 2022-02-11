@@ -18,7 +18,7 @@ public class SalesReport {
                 salesReporFile.createNewFile();
             }
             for (Map.Entry<Item, Integer> item: itemMap.entrySet()) {
-                printWriter.println(item.getKey().getName() + "\\|" + item.getValue());
+                printWriter.println(item.getKey().getName() + "|" + item.getValue());
             }
             printWriter.println();
             printWriter.println("**TOTAL SALES** $" + totalSalesPrice);
