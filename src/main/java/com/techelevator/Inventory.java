@@ -70,4 +70,8 @@ public class Inventory {
         }
         return returnMap;
     }
+
+    public List<Item> getItems() {
+        return items;
+    }
 }
