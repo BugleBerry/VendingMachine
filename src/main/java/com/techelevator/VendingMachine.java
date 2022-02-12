@@ -36,23 +36,8 @@ public class VendingMachine {
                 inventory.subtractItem(itemToPurchase);
                 totalAmountSpent = totalAmountSpent.add(new BigDecimal(itemToPurchase.getPrice()));
                 successfulPurchase = true;
-                switch(itemToPurchase.getCategory()){
-                    case "Chip":
-                        System.out.println("Crunch Crunch, Yum!");
-                        break;
-                    case "Candy":
-                        System.out.println("Munch Munch, Yum!");
-                        break;
-                    case "Drink":
-                        System.out.println("Glug Glug, Yum!");
-                        break;
-                    case "Gum":
-                        System.out.println("Chew Chew, Yum!");
-                        break;
-                    default:
-                        System.out.println("Unknown Category");
-                        break;
-                }
+                System.out.println(createMessageAfterPurchase(
+                        itemToPurchase.getCategory()));
             }
         }
         return successfulPurchase;
@@ -86,5 +71,20 @@ public class VendingMachine {
 
     public BigDecimal getTotalAmountSpent() {
         return totalAmountSpent;
+    }
+
+    public String createMessageAfterPurchase(String itemCategory) {
+        switch(itemCategory){
+            case "Chip":
+                return "Crunch Crunch, Yum!";
+            case "Candy":
+                return "Munch Munch, Yum!";
+            case "Drink":
+                return "Glug Glug, Yum!";
+            case "Gum":
+                return "Chew Chew, Yum!";
+            default:
+                return "Unknown Category";
+        }
     }
 }

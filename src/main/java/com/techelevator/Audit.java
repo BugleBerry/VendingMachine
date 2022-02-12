@@ -51,4 +51,13 @@ public class Audit {
         String output = formatter.format(date) + " GIVE CHANGE: $" + previousBalance + " $" + outputString;
         writeToFile(output);
     }
+
+    public void clearAudit() {
+        try(PrintWriter printWriter = new PrintWriter("ExampleFiles/Audit.txt")) {
+
+        }
+        catch (FileNotFoundException e) {
+            System.out.println("File couldn't be found.");
+        }
+    }
 }

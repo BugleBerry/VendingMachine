@@ -22,4 +22,5 @@ public class VendingMachineCLITest {
         Assert.assertTrue("Should be true", vendingMachineCLI.isWholeNumber(amountToAdd));
         Assert.assertFalse("Should be false", vendingMachineCLI.isWholeNumber(nonWholeNunber));
     }
+
 }

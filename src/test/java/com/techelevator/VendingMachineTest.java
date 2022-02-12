@@ -66,4 +66,28 @@ public class VendingMachineTest {
         Assert.assertEquals("Should be 4", 4, itemsLeft);
     }
 
+    @Test
+    public void should_display_correct_message_based_on_category() {
+        Assert.assertEquals("Display messages should be identical",
+                "Crunch Crunch, Yum!",
+                vendingMachine.createMessageAfterPurchase("Chip"));
+
+        Assert.assertEquals("Display messages should be identical",
+                "Munch Munch, Yum!",
+                vendingMachine.createMessageAfterPurchase("Candy"));
+
+        Assert.assertEquals("Display messages should be identical",
+                "Glug Glug, Yum!",
+                vendingMachine.createMessageAfterPurchase("Drink"));
+
+        Assert.assertEquals("Display messages should be identical",
+                "Chew Chew, Yum!",
+                vendingMachine.createMessageAfterPurchase("Gum"));
+
+        Assert.assertEquals("Display messages should be identical",
+                "Unknown Category",
+                vendingMachine.createMessageAfterPurchase("Unknown"));
+    }
+
+
 }

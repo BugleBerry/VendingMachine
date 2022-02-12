@@ -64,7 +64,6 @@ public class VendingMachineCLI {
 			case "4":
 				SalesReport salesReport = new SalesReport(vendingMachine.
 						getInventory().calculateItemSold(), vendingMachine.getTotalAmountSpent());
-				System.out.println(vendingMachine.getTotalAmountSpent());
 				break;
 			default:
 				System.out.println("Input Valid Choice");
@@ -136,4 +135,7 @@ public class VendingMachineCLI {
 				equals(new BigDecimal("0.00"));
 	}
 
+	public VendingMachine getVendingMachine() {
+		return vendingMachine;
+	}
 }

@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class SalesReport {
 
-    private File salesReporFile = new File("ExampleFiles/ExampleSalesReport.txt");
+    private File salesReporFile = new File("ExampleFiles/SalesReport.txt");
 
     public SalesReport(Map<Item, Integer> itemMap, BigDecimal totalSalesPrice){
         try(PrintWriter printWriter = new PrintWriter(salesReporFile)) {
