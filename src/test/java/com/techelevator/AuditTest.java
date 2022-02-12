@@ -11,6 +11,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
+/*
+This might sometimes fail
+because the time it
+takes to run might be off by
+a second when date is being called
+ */
+
 public class AuditTest {
     Audit audit;
     VendingMachine vendingMachine;

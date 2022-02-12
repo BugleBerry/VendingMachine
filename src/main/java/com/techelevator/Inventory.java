@@ -22,6 +22,7 @@ public class Inventory {
                 items.add(newItem);
                 amountPerItem.put(newItem, 5);
             }
+
         }
         catch (FileNotFoundException e){
             System.out.println("File wasn't found");
@@ -69,6 +70,10 @@ public class Inventory {
             returnMap.put(item.getKey(),5-item.getValue());
         }
         return returnMap;
+    }
+
+    public void setItems(List<Item> items) {
+        this.items = items;
     }
 
     public List<Item> getItems() {
