@@ -86,10 +86,8 @@ public class VendingMachineCLI {
 
 				BigDecimal amountToAdd = new BigDecimal(amount);
 				amountToAdd = new BigDecimal(String.format("%.2f",amountToAdd));
-				boolean wholeNumber = amountToAdd.remainder(new BigDecimal("1.00")).
-						equals(new BigDecimal("0.00"));
 
-				if(wholeNumber){
+				if(isWholeNumber(amountToAdd)){
 					vendingMachine.addBalance(amountToAdd);
 					hasAddedBalance = true;
 					audit.auditMoneyAdded(amountToAdd, vendingMachine.getBalance());
@@ -131,6 +129,11 @@ public class VendingMachineCLI {
 				break;
 		}
 
+	}
+
+	public boolean isWholeNumber(BigDecimal amountToAdd){
+		return amountToAdd.remainder(new BigDecimal("1.00")).
+				equals(new BigDecimal("0.00"));
 	}
 
 }
